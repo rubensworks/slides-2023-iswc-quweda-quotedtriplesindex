@@ -145,6 +145,56 @@ rdf:object :Blue .</pre>
       </ul>
     </section>
     
+    <section id="dict-approaches" class="slide" inlist="" rel="schema:hasPart" resource="#dict-approaches">
+      <h2 property="schema:name">Dictionary-based approaches</h2>
+      <img src="img/background-triplestore.svg" alt="Dictionary Encoding" style="width: 100%; margin-top: 50px;" \>
+    </section>
+    
+    <section id="singular-dict" class="slide" inlist="" rel="schema:hasPart" resource="#singular-dict">
+      <h2 property="schema:name">1. Singular Dictionary</h2>
+      <center><img src="img/dict-singular.svg" alt="Singular Dictionary" style="height: 200px" \></center>
+      <ul>
+          <li>
+          	  <h3>Quoted triples are stored fully inside the dictionary</h3>
+              <span class="indent">+ Simple implementation</span><br \>
+              <span class="indent">- Inefficient querying of triple patterns with quoted variables</span>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="quoted-dict" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-dict">
+      <h2 property="schema:name">2. Quoted Triples Dictionary</h2>
+      <center><img src="img/dict-quoted.svg" alt="Quoted Triples Dictionary" style="height: 160px" \></center>
+      <ul>
+          <li>
+          	  <h3>Quoted triples are stored in a separate dictionary</h3>
+              <span class="indent">Smaller scope for querying of triple patterns with quoted variables</span><br \>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="quoted-dict-referential" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-dict-referential">
+      <h2 property="schema:name">3. Referential Quoted Triples Dictionary</h2>
+      <center><img src="img/dict-quoted-referential.svg" alt="Referential Quoted Triples Dictionary" style="height: 250px" \></center>
+      <ul>
+          <li>
+          	  <h3>Nested terms are dictionary-encoded</h3>
+              <span class="indent">Avoids storage redundancy</span><br \>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="quoted-dict-indexed" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-dict-indexed">
+      <h2 property="schema:name">4. Indexed Quoted Triples Dictionary</h2>
+      <center><img src="img/dict-quoted-indexed.svg" alt="Indexed Quoted Triples Dictionary" style="height: 250px" \></center>
+      <ul>
+          <li>
+          	  <h3>Indexed access to quoted triples</h3>
+              <span class="indent">More efficient querying of triple patterns with quoted variables</span><br \>
+          </li>
+      </ul>
+    </section>
+    
     <section id="index-results" class="slide index" inlist="" rel="schema:hasPart" resource="#index-results">
       <ul>
         <li><a href="#index-background">Background</a></li>
