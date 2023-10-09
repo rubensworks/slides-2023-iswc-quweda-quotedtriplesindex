@@ -64,16 +64,77 @@
       </ul>
     </section>
 	
-    <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+    <section id="quoted-triples" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-triples">
+      <h2 property="schema:name">Making statements about statements</h2>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+              <pre style="float: right;">_:s rdf:type rdf:Statement ;
+rdf:subject :Violets ;
+rdf:predicate :haveColor ;
+rdf:object :Blue .</pre>
+          	  <h3>RDF 1.0: Reification, singleton properties</h3>
+			  <span class="indent">Verbose</span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+              <pre style="float: right;">_:g { :Violets :haveColor :Blue . }</pre>
+          	  <h3>RDF 1.1: Named graphs</h3>
+			  <span class="indent">Imprecise semantics</span>
+          </li>
+          <li>
+              <pre style="float: right;">&lt;&lt; :Violets :haveColor :Blue &gt;&gt;</pre>
+          	  <h3>RDF 1.2: Quoted triples</h3>
+			  <span class="indent"><br \>Originating from Olaf Hartig's RDF* proposal (later RDF-star)</span>
+          </li>
       </ul>
+    </section>
+    
+    <section id="quoted-triples-terms" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-triples-terms">
+      <h2 property="schema:name">Triples can be quoted as terms</h2>
+      <ul>
+          <li>
+          	  <h3>A new term type for subject and objects</h3>
+			  <span class="indent">IRIs, blank nodes, literals, triples</span>
+          </li>
+          <li>
+          	  <h3>Nested quoting</h3>
+			  <span class="indent">The depth of quoted triples has no theoretical limit</span>
+              <pre class="indent">:Alice :says &lt;&lt; :Bob :says &lt;&lt; :Violets :haveColor :Blue &gt;&gt; &gt;&gt; .</pre>
+          </li>
+          <li>
+          	  <h3>Querying quoted triples with SPARQL</h3>
+			  <span class="indent">Querying quoted triples or terms inside quoted triples</span>
+              <pre class="indent">?person :says &lt;&lt; :Violets :haveColor ?color &gt;&gt; .</pre>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="quoted-triples-impls" class="slide" inlist="" rel="schema:hasPart" resource="#quoted-triples-impls">
+      <h2 property="schema:name">Bridging the gap between LPGs and RDF</h2>
+      <ul>
+          <li>
+          	  <h3>LPGs: Labeled Property Graphs</h3>
+			  <span class="indent">Non-standardized collection of graph databases (e.g. Cypher)</span><br \>
+              <span class="indent">Unlike RDF, not based on IRIs</span><br \>
+              <span class="indent">Enables statements about statements</span>
+          </li>
+          <li>
+          	  <h3>Community demand</h3>
+			  <span class="indent">Users migrating from LPGs to RDF, or combining both</span>
+          </li>
+          <li>
+          	  <h3>Several systems adopted RDF-star even before standardization</h3>
+			  <span class="indent">BlazeGraph, GraphDB, Stardog, &mldr;</span><br \>
+              <span class="indent">No details about indexing and performance &rarr; open knowledge gap</span>
+          </li>
+      </ul>
+    </section>
+
+    <section id="research-question" class="slide" inlist="" rel="schema:hasPart" resource="#research-question">
+		<center>
+        	<h2 property="schema:name" class="big" style="margin-top: 3em">
+				How to index quoted triples,<br \>and what is the impact on <em>ingestion</em>, <em>storage</em>, and <em>query performance</em>?
+			</h2>
+		</center>
     </section>
     
     <section id="index-approaches" class="slide index" inlist="" rel="schema:hasPart" resource="#index-approaches">
