@@ -102,8 +102,9 @@ rdf:object :Blue .</pre>
           </li>
           <li>
           	  <h3>Querying quoted triples with SPARQL</h3>
-			  <span class="indent">Querying quoted triples or terms inside quoted triples</span>
+			  <span class="indent">Querying quoted triples or terms inside (nested) quoted triples</span>
               <pre class="indent">?person :says &lt;&lt; :Violets :haveColor ?color &gt;&gt; .</pre>
+              <pre class="indent">?p1 :says &lt;&lt; ?p2 :says &lt;&lt; :Violets :haveColor ?color &gt;&gt; &gt;&gt; .</pre>
           </li>
       </ul>
     </section>
