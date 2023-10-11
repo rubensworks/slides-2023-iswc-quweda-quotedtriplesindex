@@ -204,6 +204,55 @@ rdf:object :Blue .</pre>
       </ul>
     </section>
     
+    <section id="experimental-setup" class="slide" inlist="" rel="schema:hasPart" resource="#experimental-setup" style="font-size: 0.95em">
+      <h2 property="schema:name">Experimental Setup</h2>
+      <ul>
+          <li>
+          	  <h3>Synthetic dataset generator</h3>
+			  <span class="indent">Different <em>depths</em> of quoted triples</span><br \>
+              <pre class="indent">?p1 :says &lt;&lt; ?p2 :says &lt;&lt; :Violets :haveColor ?color &gt;&gt; &gt;&gt; .</pre>
+              <span class="indent">Number of triples (dataset <em>size</em>): 1.000 - 1.000.000</span>
+          </li>
+          <li>
+          	  <h3>Triple pattern queries at different selectivities</h3>
+			  <span class="indent">Low (size / 10 results), medium (10 results), high (1 result)</span>
+          </li>
+          <li>
+          	  <h3>Metrics</h3>
+			  <span class="indent">Storage size, ingestion time, query execution time</span>
+          </li>
+          TS/JS implementation: <a href="https://github.com/rubensworks/rdf-stores.js">https://github.com/rubensworks/rdf-stores.js</a>
+      </ul>
+    </section>
+
+    <section id="results-storage-size" class="slide" inlist="" rel="schema:hasPart" resource="#results-storage-size">
+      <h2 property="schema:name">Singular and referential dictionaries achieve lowest storage size</h2>
+      <img src="img/results-ingest-size-1.svg" alt="Storage size depth 1" style="width: 100%; margin-top: 75px" \>
+    </section>
+    
+    <section id="results-ingestion-time" class="slide" inlist="" rel="schema:hasPart" resource="#results-ingestion-time">
+      <h2 property="schema:name">Singular and quoted dictionaries achieve lowest ingestion times</h2>
+      <center>
+        <div><span style="position:relative; top: -100px; font-weight:bold">Depth 1:&nbsp;&nbsp;</span> <img src="img/results-ingest-time-1.svg" alt="Ingestion time depth 1" style="width: 70%" \></div>
+        <div><span style="position:relative; top: -100px; font-weight:bold">Depth 5:&nbsp;&nbsp;</span> <img src="img/results-ingest-time-5.svg" alt="Ingestion time depth 5" style="width: 70%" \></div>
+      </center>
+    </section>
+    
+    <section id="results-query-high" class="slide" inlist="" rel="schema:hasPart" resource="#results-query-high">
+      <h2 property="schema:name">Minimal difference in performance for highly selective queries</h2>
+      <img src="img/results-query-high-1.svg" alt="Query high depth 1" style="width: 100%; margin-top: 75px" \>
+    </section>
+    
+    <section id="results-query-medium" class="slide" inlist="" rel="schema:hasPart" resource="#results-query-medium">
+      <h2 property="schema:name">Indexed Quoted Triples Dictionary significantly faster for medium selectivity</h2>
+      <img src="img/results-query-med-1.svg" alt="Query medium depth 1" style="width: 100%; margin-top: 75px" \>
+    </section>
+    
+    <section id="results-query-low" class="slide" inlist="" rel="schema:hasPart" resource="#results-query-low">
+      <h2 property="schema:name">Indexed Quoted Triples Dictionary significantly faster for low selectivity</h2>
+      <img src="img/results-query-low-1.svg" alt="Query low depth 1" style="width: 100%; margin-top: 75px" \>
+    </section>
+    
     <section id="index-final" class="slide index" inlist="" rel="schema:hasPart" resource="#index-final">
       <ul>
         <li><a href="#index-background">Background</a></li>
@@ -213,7 +262,22 @@ rdf:object :Blue .</pre>
     </section>
 	
     <section id="conclusion" class="slide" inlist="" rel="schema:hasPart" resource="#conclusion">
-      <h2 property="schema:name" class="big">TODO: Conclusion</h2>
+      <h2 property="schema:name">Conclusions</h2>
+      <ul>
+          <li>
+          	  <h3>Indexed Quoted Triples Dictionary achieves significantly faster query performance</h3>
+			  <span class="indent">At the cost of slightly slower ingestion and a slight increase in storage size</span><br \>
+              <span class="indent">&rarr; RDF/SPARQL 1.2 can be supported with acceptable levels of performance</span>
+          </li>
+          <li>
+          	  <h3>Current experiments are limited to triple pattern queries</h3>
+			  <span class="indent">Future experimentation is needed with SPARQL queries</span>
+          </li>
+          <li>
+          	  <h3>Current storage approaches are only dictionary-based</h3>
+			  <span class="indent">Future work on integrating quoted triples directly into main indexes</span>
+          </li>
+      </ul>
     </section>
 
     <footer>
